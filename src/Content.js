@@ -1,11 +1,21 @@
 import React from 'react'
-
+import { useState } from 'react';
 const Content = () => {
     
+    const [Name,setName]=useState('Hemanth');
+    const [Count,setCount]=useState(0);
+
+    const handleIncrement=()=>{
+        setCount(Count+1);
+        setCount(Count+1);
+        setCount(Count+1);
+        console.log(Count);
+    }
+
     const handlenamechange=()=>{
         const names=['Hemanth','Harshitha','Prashanth','Karthik'];
         const value=Math.floor(Math.random()*3);
-        return names[value];
+        setName(names[value]);
     }
 
     const handleclick=()=>{
@@ -21,8 +31,14 @@ const Content = () => {
 
     return (
     <main>
-        <p onDoubleClick={()=>handleclick2(`${handlenamechange()}`)}> Hello {handlenamechange()} </p>
-        <button onClick={handleclick}>Click me</button>
+        <p onDoubleClick={()=>handleclick2(`${handlenamechange()}`)}>
+            Hello {Name} 
+        </p>
+        <p>
+            My nuumber is {Count}
+        </p>
+        <button onClick={handlenamechange}>Click me</button>
+        <button onClick={handleIncrement}>Click me</button>
         <button onClick={()=>handleclick2("Hemanth Kumar")}>Click hemanth</button>
         <button onClick={(e)=>handleclick3(e)}>Click event</button>
     </main>
